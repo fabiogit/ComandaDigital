@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Configurações BD -->
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost/comanda_digital</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+
+		<!-- Configurações Hibernate -->
+		<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">none</property>
+
+		<!-- Mapeamentos -->
+		<mapping class="modelo.entidade.Caixa" />
+		<mapping class="modelo.entidade.Categoria" />
+		<mapping class="modelo.entidade.Comanda" />
+		<mapping class="modelo.entidade.FormaPagamento" />
+		<mapping class="modelo.entidade.ItemPedido" />
+		<mapping class="modelo.entidade.Mesa" />
+		<mapping class="modelo.entidade.Pedido" />
+		<mapping class="modelo.entidade.Produto" />
+		<mapping class="modelo.entidade.Retirada" />
+		<mapping class="modelo.entidade.Unidade" />
+		<mapping class="modelo.entidade.Usuario" />
+		<mapping class="modelo.entidade.Venda" />
+
+	</session-factory>
+</hibernate-configuration>

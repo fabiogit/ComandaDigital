@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/MasterPages/MasterPage.xhtml">
+	<ui:define name="centro">
+		<h2>Listagem de Usuários</h2>
+		<h:form>
+			<p:dataTable id="table" var="u" value="#{UsuarioBean.listarTodos()}">
+				<p:column headerText="Código">
+					<h:outputText value="#{u.idUsuario}" />
+				</p:column>
+
+				<p:column headerText="Login">
+					<h:outputText value="#{u.login}" />
+				</p:column>
+
+				<p:column headerText="Senha">
+					<h:outputText value="#{u.senha}" />
+				</p:column>
+
+				<p:column headerText="Ações" style="text-align:center">
+					<p:commandButton id="alterar" icon="ui-icon-pencil" action="#{UsuarioBean.alterar(u)}" />
+					<p:tooltip id="toolTipAlterar" for="alterar" value="Alterar" showEffect="clip" hideEffect="fade" />
+					
+					<p:commandButton id="excluir" update="table" icon="ui-icon-trash" action="#{UsuarioBean.excluir(u)}" style="margin-left:10px;">
+						<p:confirm header="Atenção" message="Deseja realmente excluir este registro?" icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:tooltip id="toolTipExcluir" for="excluir" value="Excluir" showEffect="clip" hideEffect="fade" />
+				</p:column>
+			</p:dataTable>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+			
+			<p:commandButton value="Novo Cadastro" action="#{UsuarioBean.novo()}" icon="ui-icon-plus" style="margin-top:10px;float:right;" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

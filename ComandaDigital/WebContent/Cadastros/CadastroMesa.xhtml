@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/MasterPages/MasterPage.xhtml">
+	<ui:define name="centro">
+		<h2>Cadastro de Mesas</h2>
+		<h:form>
+			<h:panelGrid columns="2" id="formulario">
+				<p:outputLabel for="código" value="Código: " />
+				<p:inputText id="código"  value="#{MesaBean.mesa.idMesa}" />
+				<p:outputLabel for="numero" value="Número: " />
+				<p:inputText id="numero" value="#{MesaBean.mesa.numero}" />
+				<p:outputLabel for="ocupada" value="Ocupada: " />
+				<p:selectOneMenu id="ocupada" value="#{MesaBean.mesa.ocupada}" style="width:210px">
+					<f:selectItem itemLabel="Não" itemValue="false" />
+					<f:selectItem itemLabel="Sim" itemValue="true" />
+				</p:selectOneMenu>
+				<p:outputLabel for="capacidade" value="Capacidade: " />
+				<p:inputText id="capacidade" value="#{MesaBean.mesa.capacidade}" />
+			</h:panelGrid>
+			<h:panelGrid columns="3" id="botoes">
+				<p:commandButton value="Limpar" type="reset" />
+				<p:commandButton value="Salvar"
+					action="#{MesaBean.incluirOuAlterar}" />
+				<p:commandButton value="Cancelar" action="ListaMesa.xhtml" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/MasterPages/MasterPage.xhtml">
+	<ui:define name="centro">
+		<h2>Nova Comanda</h2>
+		<h:form>
+			<h:panelGrid columns="2" id="formulario">
+			
+				<p:outputLabel for="codigo" value="Código: " />
+				<p:inputText id="codigo"  value="#{ComandaBean.comanda.idComanda}" />
+				
+				<p:outputLabel for="datetime" value="Data e Hora:" />
+        		<p:calendar id="datetime" value="#{ComandaBean.comanda.dataHoraComanda}" pattern="dd/MM/yyyy HH:mm:ss" />
+        				
+				<p:outputLabel for="mesa" value="Mesa: " />
+				<p:selectOneMenu id="mesa" value="#{ComandaBean.comanda.idMesa.idMesa}" style="width:210px">
+					<f:selectItems value="#{MesaBean.selectMesas}" var="mesa"  itemValue="#{idMesa}"/>
+				</p:selectOneMenu>
+				
+			</h:panelGrid>
+			<h:panelGrid columns="3" id="botoes">
+				<p:commandButton value="Limpar" type="reset" />
+				<p:commandButton value="Salvar" action="#{ComandaBean.incluirOuAlterar}" />
+				<p:commandButton value="Cancelar" action="ListaComanda.xhtml" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/MasterPages/MasterPage.xhtml">
+	<ui:define name="centro">
+		<h2>Cadastro de Usuários</h2>
+		<h:form>
+			<h:panelGrid columns="2" id="formulario">
+				<p:outputLabel for="codigo" value="Código: " />
+				<p:inputText id="codigo"  value="#{UsuarioBean.usuario.idUsuario}" />
+				
+				<p:outputLabel for="login" value="Login: " />
+				<p:inputText id="login"  value="#{UsuarioBean.usuario.login}" />
+				
+				<p:outputLabel for="senha" value="Senha: " />
+				<p:password id="senha"  value="#{UsuarioBean.usuario.senha}" />
+			</h:panelGrid>
+			<h:panelGrid columns="3" id="botoes">
+				<p:commandButton value="Limpar" type="reset" />
+				<p:commandButton value="Salvar" action="#{UsuarioBean.incluirOuAlterar}" />
+				<p:commandButton value="Cancelar" action="ListaUsuario.xhtml" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/MasterPages/MasterPage.xhtml">
+	<ui:define name="centro">
+		<h2>Cadastro de Produtos</h2>
+		<h:form>
+			<h:panelGrid columns="2" id="formulario">
+				<p:outputLabel for="codigo" value="Código: " />
+				<p:inputText id="codigo"  value="#{ProdutoBean.produto.idProduto}" />
+				
+				<p:outputLabel for="descricao" value="Descrição: " />
+				<p:inputText id="descricao"  value="#{ProdutoBean.produto.descricao}" mask="9999.99" />
+				
+				<p:outputLabel for="valor" value="Valor: " />
+				<p:inputText id="valor"  value="#{ProdutoBean.produto.valor}" />
+				
+				<p:outputLabel for="unidade" value="Unidade: " />
+				<p:selectOneMenu id="unidade" value="#{ProdutoBean.produto.idUnidade.idUnidade}" style="width:210px">
+					<f:selectItems value="#{UnidadeBean.selectUnidades}" var="unidade" itemLabel="descricao" itemValue="#{idUnidade}"/>
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="categoria" value="Categoria: " />
+				<p:selectOneMenu id="categoria" value="#{ProdutoBean.produto.idCategoria.idCategoria}" style="width:210px">
+					<f:selectItems value="#{CategoriaBean.selectCategorias}" var="categoria" itemLabel="descricao" itemValue="#{idCategoria}"/>
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="exibirCardapio" value="Exibir no Cardápio: " />
+				<p:selectOneMenu id="exibirCardapio" value="#{ProdutoBean.produto.exibirCardapio}" style="width:210px">
+					<f:selectItem itemLabel="Sim" itemValue="true" />
+					<f:selectItem itemLabel="Não" itemValue="false" />
+				</p:selectOneMenu>
+				
+			</h:panelGrid>
+			<h:panelGrid columns="3" id="botoes">
+				<p:commandButton value="Limpar" type="reset" />
+				<p:commandButton value="Salvar" action="#{ProdutoBean.incluirOuAlterar}" />
+				<p:commandButton value="Cancelar" action="ListaProduto.xhtml" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/MasterPages/MasterPage.xhtml">
+	<ui:define name="centro">
+		<h2>Listagem de Comandas</h2>
+		<h:form>
+			<p:dataTable id="table" var="c" value="#{ComandaBean.listarAbertas()}" style="font-size:8px;">
+				<p:column headerText="Código" style="width:65px;">
+					<h:outputText value="#{c.idComanda}" />
+				</p:column>
+
+				<p:column headerText="Data/Hora">
+					<h:outputText value="#{c.dataHoraComanda}" />
+				</p:column>
+				
+				<p:column headerText="SubTotal" style="width:90px;">
+					<h:outputText value="#{c.subTotal}" />
+				</p:column>
+
+				<p:column headerText="Chave Acesso" style="width:120px;">
+					<h:outputText value="#{c.chaveAcesso}" />
+				</p:column>
+				
+				<p:column headerText="Aberta" style="width:55px;">
+					<h:outputText value="#{c.statusComanda == 'true' ? 'Aberta' : 'Fechada'}" />
+				</p:column>
+				
+				<p:column headerText="Mesa" style="width:40px;">
+					<h:outputText value="#{c.idMesa.numero}" />
+				</p:column>
+				<p:column headerText="Ações" style="text-align:center; width:55px" >
+					<p:commandButton id="excluir" update="table" icon="ui-icon-trash"
+						action="#{ComandaBean.excluir(c)}">
+						<p:confirm header="Atenção" message="Deseja realmente excluir este registro?" icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:tooltip id="toolTipExcluir" for="excluir" value="Excluir"
+						showEffect="clip" hideEffect="fade" />
+				</p:column>
+			</p:dataTable>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+			<p:commandButton value="Novo Cadastro" action="#{ComandaBean.novo}"
+				icon="ui-icon-plus" style="margin-top:10px;float:right;" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

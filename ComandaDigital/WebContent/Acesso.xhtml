@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>ComandaDigital - Acesso</title>
+	<style type="text/css">
+body {
+	background-color: #eeeeee;
+	font-size: 12px;
+	background-image: url("../resources/img/lanche.jpg");
+}
+
+#form {
+	width: 400px;
+	height: 250px;
+	position: absolute;
+	top: 50%;
+	margin-top: -125px;
+	left: 50%;
+	margin-left: -200px;
+	text-align: center;
+}
+
+#alinhar-vertical{
+position: absolute;
+top: 0; bottom: 0;
+left: 0; right: 0;
+margin: auto;
+}
+</style>
+</h:head>
+<h:body>
+	<p:layout id="form">
+		<p:layoutUnit position="center">
+			<h:form style="margin-top:14px;">
+				<h:graphicImage url="/resources/img/Logo.png" style="width:150px;" />
+				<center>
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="Login: " />
+						<p:inputText id="login" value="#{AcessoBean.usuarioSessao.login}" />
+						<h:outputText value="Senha: " />
+						<p:password id="senha" value="#{AcessoBean.usuarioSessao.senha}" />
+						<h:outputText value="" />
+						<p:commandButton value="Ok" action="#{AcessoBean.logar}"
+							style="float:right;" />
+					</h:panelGrid>
+				</center>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

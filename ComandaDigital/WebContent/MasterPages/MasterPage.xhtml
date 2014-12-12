@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>ComandaDigital</title>
+	<style type="text/css">
+body {
+	background-color: #eeeeee;
+	font-size: 12px;
+}
+
+h2 {
+	color:#cb842e;
+}
+</style>
+</h:head>
+<h:body>
+	<div align="center">
+		<p:layout style="min-width:1020px;max-width:1020px;min-height:600px;">
+			<p:layoutUnit id="topo" position="north" size="100">
+				<h:graphicImage url="/resources/img/Logo.png"
+					style="width:150px; margin-top:4px;" />
+			</p:layoutUnit>
+
+			<p:layoutUnit id="menu" header="Menu" position="west" size="220"
+				text-align="center">
+				<h:form>
+					<p:growl autoUpdate="true" />
+					<p:panelMenu style="width:212px; text-align:left; margin-top:5px;">
+						<p:submenu label="Principal">
+							<p:menuitem value="Página Inicial" url="/index.xhtml"
+								icon="ui-icon-home" />
+							<p:menuitem value="Monitor de Pedidos"
+								url="http://www.primefaces.org/documentation"
+								icon="ui-icon-volume-on" />
+							<p:menuitem value="Comanda"
+								url="/Principal/ListaComanda.xhtml"
+								icon="ui-icon-document" />
+						</p:submenu>
+						<p:submenu label="Caixa" style="margin-top:5px;">
+							<p:menuitem value="Venda" url="http://www.primefaces.org"
+								icon="ui-icon-plus" />
+							<p:menuitem value="Retirada"
+								url="http://www.primefaces.org/downloads"
+								icon="ui-icon-suitcase" />
+							<p:menuitem value="Saldo"
+								url="http://www.primefaces.org/support"
+								icon="ui-icon-arrowrefresh-1-w" />
+						</p:submenu>
+						<p:submenu label="Cozinha" style="margin-top:5px;">
+							<p:menuitem value="Visualizar Pedidos"
+								url="http://www.primefaces.org" icon="ui-icon-search" />
+							<p:menuitem value="Atender Itens de Pedido"
+								url="http://www.primefaces.org/documentation"
+								icon="ui-icon-check" />
+						</p:submenu>
+						<p:submenu label="Cadastros" style="margin-top:5px;">
+							<p:menuitem value="Mesas" url="/Cadastros/ListaMesa.xhtml"
+								icon="ui-icon-plus" />
+							<p:menuitem value="Categorias"
+							url="/Cadastros/ListaCategoria.xhtml"
+							icon="ui-icon-carat-2-n-s" />
+							<p:menuitem value="Unidades"
+							url="/Cadastros/ListaUnidade.xhtml"
+							icon="ui-icon-calculator" />
+							<p:menuitem value="Produtos"
+								url="/Cadastros/ListaProduto.xhtml"
+								icon="ui-icon-cart" />
+							<p:menuitem value="Usuários"
+								url="/Cadastros/ListaUsuario.xhtml" icon="ui-icon-locked" />
+						</p:submenu>
+					</p:panelMenu>
+				</h:form>
+			</p:layoutUnit>
+
+			<p:layoutUnit id="centro" position="center">
+				<ui:insert name="centro">
+                	O que estiver aqui será substituido!
+                </ui:insert>
+			</p:layoutUnit>
+			
+			<p:layoutUnit id="rodape" position="south" size="50">
+				Copyright 2014 ComandaDigital<br/>Todos os direitos reservados
+			</p:layoutUnit>
+		</p:layout>	
+	</div>
+</h:body>
+</html>
